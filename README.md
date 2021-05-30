@@ -9,6 +9,17 @@ A website where users can choose whether they want to search for a food recipe o
 * Placeholder 3
 * Placeholder 4
 
+### Web tools used
+* HTML
+* CSS
+ *  Framework name
+ *  Basic CSS
+* Javascript
+* Placeholder API #1
+* Placeholder API #2
+* jQuery (?)
+* Moment.js (?)
+
 ### Website
 
 ## Contributors
