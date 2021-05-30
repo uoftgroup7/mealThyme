@@ -12,8 +12,8 @@ A website where users can choose whether they want to search for a food recipe o
 ### Web tools used
 * HTML
 * CSS
- *  Framework name
- *  Basic CSS
+  *  Framework CSS
+  *  Basic CSS
 * Javascript
 * Placeholder API #1
 * Placeholder API #2
