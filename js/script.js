@@ -48,7 +48,10 @@ function goBack(){
   containerRecipe.classList.remove("show");
   goback.classList.remove("show");
   btnContainer.classList.remove("hide");
-
+  
+  //clear results when going back
+  restResult.innerHTML = "";
+  recipeResult.innerHTML = "";
 
 }
 
