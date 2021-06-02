@@ -7,9 +7,14 @@ var containerRecipe = document.querySelector(".containerRecipe")
 var searchRecipe = document.querySelector(".searchRecipe"); 
 var restResult = document.querySelector(".restResult")
 var recipeResult = document.querySelector(".recipeResult")
-var goback = document.querySelector("#goback");
+var nextBtn = document.querySelector("#nextBtn");
 
 var cardReciepe = document.querySelector(".card-image")
+var recpVal = document.querySelector("#recipe")
+var incStart = 0;
+var incEnd = 5;
+var savRec;
+var searchHisotry = document.querySelector("#searchHistory")
 
 function hideRestaurants(){
     btnContainer.classList.remove("show");
@@ -20,11 +25,10 @@ function hideRecipe(){
   btnContainer.classList.remove("show");
     btnContainer.classList.add("hide");
     containerRecipe.classList.add("show");
-
 }
 
 function listRestaurants(rest){
-  goback.classList.add("show");
+  nextBtn.classList.add("show");
   restResult.innerHTML = "";
   for(var i = 0; i< 5; i++){
     var address = rest.hints[i].food.restaurant.address;
@@ -37,10 +41,11 @@ function listRestaurants(rest){
 }
 
 }
-function listRecipes(recipe){
-  goback.classList.add("show");
+function listRecipes(recipe, nextVal, nextI){
+  nextBtn.classList.add("show");
   recipeResult.innerHTML = "";
-  for(var i = 0; i<5; i++){
+  searchHistory.innerHTML += `<button class="button is-primary is-rounded">`+recpVal.value+`</button>`
+  for(var i = nextVal; i<nextI; i++){
     var calorie = Math.ceil(recipe.hits[i].recipe.calories);
     var label = recipe.hits[i].recipe.label;
     var imgR = recipe.hits[i].recipe.image;
@@ -54,7 +59,7 @@ function listRecipes(recipe){
         </figure>
       </div>
       <div class="card-content">
-        <div class="content"> 
+        <div class="content" id="recContDiv> 
           <div id="recpText"> `
           + `${label}  - </br> ${calorie} Calories` + `
           </div>
@@ -64,13 +69,13 @@ function listRecipes(recipe){
         </div>
       </div>
     </div>`
-}
+  }
 }
 
 function goBack(){
   containerRest.classList.remove("show");
   containerRecipe.classList.remove("show");
-  goback.classList.remove("show");
+  nextBtn.classList.remove("show");
   btnContainer.classList.remove("hide");
 }
 
@@ -121,7 +126,8 @@ function bringRecipe(recSearch){
     if (response.ok) {
         response.json().then(function(recipe) {
             console.log(recipe);
-            listRecipes(recipe);
+            savRec = recipe
+            listRecipes(recipe,incStart,incEnd);
           });
         } else {
           alert("Error: " + response.statusText);
@@ -129,8 +135,16 @@ function bringRecipe(recSearch){
       });
 }
 
+function goNext (){
+  incStart = 5;
+  incEnd = 10;
+  listRecipes(savRec,incStart,incEnd)
+  incStart = 0;
+  incEnd = 5;
+}
+
 restBtn.addEventListener("click", hideRestaurants);
 recipeBtn.addEventListener("click", hideRecipe);
 searchRest.addEventListener("click", bringRestaurants);
 searchRecipe.addEventListener("click", bringRecipe);
-goback.addEventListener("click", goBack);
+nextBtn.addEventListener("click", goNext);

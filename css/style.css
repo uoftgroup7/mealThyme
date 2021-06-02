@@ -9,7 +9,6 @@
     display: flex;
     background-color: aqua;
     margin-top: 1rem;
-    
 }
 
 .card{
@@ -40,4 +39,9 @@
 #linkContent a{
     text-decoration: none;
     color:gray;
+}
+
+
+#linkContent a:hover{
+    color:green;
 }
