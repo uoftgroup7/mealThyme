@@ -14,7 +14,16 @@ var recpVal = document.querySelector("#recipe")
 var incStart = 0;
 var incEnd = 5;
 var savRec;
-var searchHisotry = document.querySelector("#searchHistory")
+var searchArray=[];
+// var searchHistory = document.querySelector("#searchHistory")
+
+// Get localStorage items, if localstorage is empty do nothing else parse data
+searchLS = window.localStorage.getItem('search');
+if (!searchLS) {
+  searchArray = [];
+}else {
+  searchArray = JSON.parse(searchLS);
+}
 
 function hideRestaurants(){
     btnContainer.classList.remove("show");
@@ -41,16 +50,19 @@ function listRestaurants(rest){
 }
 
 }
-function listRecipes(recipe, nextVal, nextI){
+function listRecipes(recipe, nextVal, nextI, next){
   nextBtn.classList.add("show");
   recipeResult.innerHTML = "";
-  searchHistory.innerHTML += `<button class="button is-primary is-rounded">`+recpVal.value+`</button>`
+  console.log(searchRecipe)
+  if (next===1) {
+  } else {
+    searchBtnClick()
+  }
   for(var i = nextVal; i<nextI; i++){
     var calorie = Math.ceil(recipe.hits[i].recipe.calories);
     var label = recipe.hits[i].recipe.label;
     var imgR = recipe.hits[i].recipe.image;
     var recLink = recipe.hits[i].recipe.url;
-    console.log(imgR)
     recipeResult.innerHTML += `
     <div class="card">
       <div class="card-image">
@@ -80,7 +92,6 @@ function goBack(){
 }
 
 function bringRestaurants(){
-
     var apiKey = "77b4c1d8-deba-4157-a707-5c0d63e2d0a7"
     geoUrl = 'https://ipfind.co/me?auth=' + apiKey
     fetch(geoUrl).then(function(response) {
@@ -115,8 +126,8 @@ function bringRestaurants(){
         });
 }
 
-function bringRecipe(recSearch){
- 
+function bringRecipe(){
+  // console.log(e)
   var recSearch = document.querySelector("#recipe").value;
   var recipeApiKey = "5833503478a5c1d972dd59f1df3396f0"
   var recipeId = "ec473133"
@@ -124,21 +135,27 @@ function bringRecipe(recSearch){
   fetch(apiRecipe).then(function(response) {
     // request was successful
     if (response.ok) {
-        response.json().then(function(recipe) {
-            console.log(recipe);
-            savRec = recipe
-            listRecipes(recipe,incStart,incEnd);
-          });
-        } else {
-          alert("Error: " + response.statusText);
-        }
-      });
+      response.json().then(function(recipe) {
+          console.log(recipe);
+          savRec = recipe
+          listRecipes(recipe,incStart,incEnd,0);
+          searchArray.push(recSearch)
+          window.localStorage.setItem("search",JSON.stringify(searchArray))
+        });
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    });
+}
+
+function searchBtnClick () {
+  searchHistory.innerHTML += `<button class="button is-primary is-rounded" id="historyButton">`+recpVal.value+`</button>`
 }
 
 function goNext (){
   incStart = 5;
   incEnd = 10;
-  listRecipes(savRec,incStart,incEnd)
+  listRecipes(savRec,incStart,incEnd,1)
   incStart = 0;
   incEnd = 5;
 }
@@ -148,3 +165,8 @@ recipeBtn.addEventListener("click", hideRecipe);
 searchRest.addEventListener("click", bringRestaurants);
 searchRecipe.addEventListener("click", bringRecipe);
 nextBtn.addEventListener("click", goNext);
+document.body.addEventListener( 'click', function ( event ) {
+  if( event.target.id == 'historyButton' ) {
+    alert("click")
+  };
+} );
