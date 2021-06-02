@@ -9,6 +9,8 @@ var restResult = document.querySelector(".restResult")
 var recipeResult = document.querySelector(".recipeResult")
 var goback = document.querySelector("#goback");
 
+var cardReciepe = document.querySelector(".card-image")
+
 function hideRestaurants(){
     btnContainer.classList.remove("show");
     btnContainer.classList.add("hide");
@@ -24,22 +26,44 @@ function hideRecipe(){
 function listRestaurants(rest){
   goback.classList.add("show");
   restResult.innerHTML = "";
-  for(var i = 0; i< 10; i++){
+  for(var i = 0; i< 5; i++){
     var address = rest.hints[i].food.restaurant.address;
     var postalCode = rest.hints[i].food.restaurant.postal;
     restResult.innerHTML += `
-    <li>${address}  -  ${postalCode} </li>`
+    <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+    <li>${address}  -  ${postalCode}</li>`
 }
 
 }
 function listRecipes(recipe){
   goback.classList.add("show");
   recipeResult.innerHTML = "";
-  for(var i = 0; i< 10; i++){
-    var calorie = recipe.hits[i].recipe.calories;
+  for(var i = 0; i<5; i++){
+    var calorie = Math.ceil(recipe.hits[i].recipe.calories);
     var label = recipe.hits[i].recipe.label;
+    var imgR = recipe.hits[i].recipe.image;
+    var recLink = recipe.hits[i].recipe.url;
+    console.log(imgR)
     recipeResult.innerHTML += `
-    <li>${label}  - ${calorie} </li>`
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-128x128px">
+          <img src=` + imgR +` alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content"> 
+          <div id="recpText"> `
+          + `${label}  - </br> ${calorie} Calories` + `
+          </div>
+          <div id="linkContent"><a href="` + `${recLink}` + `" target="_blank">
+              Click for more</a>
+          </div>
+        </div>
+      </div>
+    </div>`
 }
 }
 
@@ -48,8 +72,6 @@ function goBack(){
   containerRecipe.classList.remove("show");
   goback.classList.remove("show");
   btnContainer.classList.remove("hide");
-
-
 }
 
 function bringRestaurants(){

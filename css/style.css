@@ -4,3 +4,40 @@
 .show{
     display: inline-block;
 }
+
+#recResult {
+    display: flex;
+    background-color: aqua;
+    margin-top: 1rem;
+    
+}
+
+.card{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    padding-top: 10px;
+    width: 100%;
+    color: red;
+    background-color: green;
+}
+
+.card-content {
+    background-color:yellow;
+    text-decoration: none;
+    justify-content: space-between;
+    text-align: center;
+    padding:0px;
+}
+
+
+#linkContent {
+    padding-top:1rem;
+    background-color: greenyellow;
+}
+
+#linkContent a{
+    text-decoration: none;
+    color:gray;
+}
