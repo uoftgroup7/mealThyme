@@ -29,12 +29,29 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light restBtn btns">
+                    <a class="button is-light" id="restSearch">
                         <strong>Restaurants</strong>
                     </a>
-                    <a class="button is-light recipeBtn btns">
+                    <a class="button is-light" id="recipeSearch">
                         <strong>Recipes</strong>
                     </a>
+                    <div id="modal" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title" id="searchType">Search placeholder</p>
+                                <button class="delete" aria-label="close" id="close1"></button>
+                            </header>
+                            <section class="modal-card-body">
+                                <input type="text" id="searchStuff" />
+                                <input type="text" id="distance" />
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success">Search</button>
+                                <button class="button" id="close2">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
