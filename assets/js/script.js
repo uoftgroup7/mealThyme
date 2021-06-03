@@ -120,83 +120,88 @@ var selectSearch = function (value, dist, search, lat, lon) {
     var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
 
     fetch(recApi).then(function (response) {
-      if (response.redirected) {
+      console.log(response)
+      if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          clearScreen();
-          listRecipes(data);
+          if (data.count > 0) {
+            clearScreen();
+            listRecipes(data);
+          } else {
+            errorMsg1.textContent = "No foods found, please try again.";
+          }
         })
-      } else {
-        errorMsg1.textContent = "No foods found, please try again.";
       }
     })
   }
 }
 
-var listRestaurants = function (data) {
-  //run through and list first 10 restaurants found
-  for (var i = 0; i < 5; i++) {
-    var card = document.createElement('div');
-    card.classList = 'card';
 
-    //two p tags for restaurant name and location
-    var restName = document.createElement('p');
-    var restLoc = document.createElement('p');
-    //define where to get information from
-    restName = data.hints[i].food.restaurant.address;
-    restLoc = data.hints[i].food.restaurant.postal;
-    var text1 = document.createTextNode(restName);
-    var text2 = document.createTextNode(restLoc);
+  var listRestaurants = function (data) {
+    //run through and list first 10 restaurants found
+    for (var i = 0; i < 5; i++) {
+      var card = document.createElement('div');
+      card.classList = 'card';
 
-    //add to card element created above
-    card.appendChild(text1);
-    card.appendChild(text2);
-    //add card to hero body
-    results.appendChild(card);
-    deactivateModal();
+      //two p tags for restaurant name and location
+      var restName = document.createElement('p');
+      var restLoc = document.createElement('p');
+      //define where to get information from
+      restName = data.hints[i].food.restaurant.address;
+      restLoc = data.hints[i].food.restaurant.postal;
+      var text1 = document.createTextNode(restName);
+      var text2 = document.createTextNode(restLoc);
+
+      //add to card element created above
+      card.appendChild(text1);
+      card.appendChild(text2);
+      //add card to hero body
+      results.appendChild(card);
+      deactivateModal();
+    }
+
   }
 
-}
-
-var listRecipes = function (data) {
-  for (var i = 0; i < 5; i++) {
-    var cals = Math.ceil(data.hits[i].recipe.calories);
-    var name = data.hits[i].recipe.label;
-    var imgUrl = data.hits[i].recipe.image;
-    var recUrl = data.hits[i].recipe.url;
-    results.innerHTML += `
+  var listRecipes = function (data) {
+    for (var i = 0; i < 5; i++) {
+      var cals = Math.ceil(data.hits[i].recipe.calories);
+      var name = data.hits[i].recipe.label;
+      var imgUrl = data.hits[i].recipe.image;
+      var recUrl = data.hits[i].recipe.url;
+      results.innerHTML += `
     <div class="card">
       <div class="card-image">
         <figure class="image is-128x128px">
-        <img src=` + imgUrl +` alt="Cover Image">
+        <img src=` + imgUrl + ` alt="Cover Image">
+        </p>
         </figure>
       </div>
       <div class="card-content">
-        <div class="content" id="` + name  +`">
-        <div id="recpText"> `
+        <div class="content" id="` + name + `">
+          <div id="recpText"> `
         + `${name}  - </br> ${cals} Calories` + `
-        </div>
+          </div>
           <div>
             <a href="` + recUrl + `" target="_blank">Click here for recipe</a>
           </div>
         </div>
       </div>
     </div>`
+    }
+    deactivateModal();
   }
-  deactivateModal();
-}
 
-//function to remove all elements in the body
-var clearScreen = function () {
-  while (results.firstChild) {
-    results.removeChild(results.firstChild);
+  //function to remove all elements in the body
+  var clearScreen = function () {
+    while (results.firstChild) {
+      results.removeChild(results.firstChild);
+    }
   }
-}
 
-restBtn.addEventListener("click", activateModal);
-restBtn.addEventListener("click", restaurantModal);
-recipeBtn.addEventListener("click", activateModal);
-recipeBtn.addEventListener("click", recipeModal);
-modalClose1.addEventListener("click", deactivateModal);
-modalClose2.addEventListener("click", deactivateModal);
-searchBtn.addEventListener("click", searchCall);
+  restBtn.addEventListener("click", activateModal);
+  restBtn.addEventListener("click", restaurantModal);
+  recipeBtn.addEventListener("click", activateModal);
+  recipeBtn.addEventListener("click", recipeModal);
+  modalClose1.addEventListener("click", deactivateModal);
+  modalClose2.addEventListener("click", deactivateModal);
+  searchBtn.addEventListener("click", searchCall);
