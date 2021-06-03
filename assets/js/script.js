@@ -19,14 +19,8 @@ var cardTwo = document.getElementById("cardTwo")
 var inputTwo = document.getElementById("distance");
 var searchBtn = document.getElementById("searchBtn");
 
-var btnContainer = document.querySelector(".btnContainer");
-var containerRest = document.querySelector(".containerRest");
-var searchRest = document.querySelector(".searchRest");
-var containerRecipe = document.querySelector(".containerRecipe")
-var searchRecipe = document.querySelector(".searchRecipe");
-var restResult = document.querySelector(".restResult")
-var recipeResult = document.querySelector(".recipeResult")
-var goback = document.querySelector("#goback");
+//target for cards to be created into
+var results = document.getElementById("resultBody");
 
 //indicate if searching for restaurant or recipe
 var state = 0;
@@ -82,14 +76,14 @@ var searchCall = function () {
     if (inputOne.value) {
       var inputTextRec = inputOne.value;
       locationCheck(inputTextRec, 0, 1);
-    }
+    } 
   }
 }
 
+//get user location from IP address
 var locationCheck = function (input1, input2, search) {
   var apiUrl = 'https://ipfind.co/me?auth=77b4c1d8-deba-4157-a707-5c0d63e2d0a7'
 
-  //get user location from IP address
   fetch(apiUrl).then(function (response) {
     //if response was successful
     if (response.ok) {
@@ -114,6 +108,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          listRestaurants(data);
         })
       } else {
         errorMsg1.textContent = "Not a restuarants found, please try again.";
@@ -127,12 +122,42 @@ var selectSearch = function (value, dist, search, lat, lon) {
     if(response.ok) {
       response.json().then(function (data) {
         console.log(data);
+        listRecipes(data);
       })
     } else {
       errorMsg1.textContent = "No foods found, please try again.";
     }
   })
   }
+}
+
+var listRestaurants = function(data) {
+  //run through and list first 10 restaurants found
+  for (var i = 0; i < 10; i++) {
+    var card = document.createElement('div');
+    card.classList = 'card';
+
+    //two p tags for restaurant name and location
+    var restName = document.createElement('p');
+    var restLoc = document.createElement('p');
+    //define where to get information from
+    restName = data.hints[i].food.restaurant.address;
+    restLoc = data.hints[i].food.restaurant.postal;
+    var text1 = document.createTextNode(restName);
+    var text2 = document.createTextNode(restLoc);
+
+    //add to card element created above
+    card.appendChild(text1);
+    card.appendChild(text2);
+    //add card to hero body
+    results.appendChild(card);
+    deactivateModal();
+  }
+
+}
+
+var listRecipes = function(data) {
+
 }
 
 restBtn.addEventListener("click", activateModal);
