@@ -120,7 +120,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
     var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
 
     fetch(recApi).then(function (response) {
-      if (response.ok) {
+      if (response.redirected) {
         response.json().then(function (data) {
           console.log(data);
           clearScreen();
