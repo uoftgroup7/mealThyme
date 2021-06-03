@@ -108,7 +108,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
   //change which search is used depending on restaurant or recipe clicked
   if (search === 0) {
     //call restaurant api
-    var restApi = 'https://api.edamam.com/api/menu-items/v2/search?q=$' + value + '&lat=$' + lat + '&lon=$' + lon + '&dist=$' + dist + '&app_id=$8288af20&app_key=$e13b76e5858a79ab9d586980b305da5a';
+    var restApi = 'https://api.edamam.com/api/menu-items/v2/search?q=' + value + '&lat=' + lat + '&lon=' + lon + '&dist=' + dist + '&app_id=8288af20&app_key=e13b76e5858a79ab9d586980b305da5a';
 
     fetch(restApi).then(function (response) {
       if (response.ok) {
@@ -116,12 +116,22 @@ var selectSearch = function (value, dist, search, lat, lon) {
           console.log(data);
         })
       } else {
-
+        errorMsg1.textContent = "Not a restuarants found, please try again.";
       }
   })
 } else {
   //call recipe api
-  var recApi = '';
+  var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
+
+  fetch(recApi).then(function (response) {
+    if(response.ok) {
+      response.json().then(function (data) {
+        console.log(data);
+      })
+    } else {
+      errorMsg1.textContent = "No foods found, please try again.";
+    }
+  })
   }
 }
 
