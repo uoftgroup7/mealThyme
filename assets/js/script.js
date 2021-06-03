@@ -11,6 +11,7 @@ var modalClose2 = document.getElementById("close2");
 //input search fields
 var typeSearch = document.getElementById("searchType");
 var inputOne = document.getElementById("searchStuff");
+var cardTwo = document.getElementById("cardTwo")
 var inputTwo = document.getElementById("distance");
 
 var btnContainer = document.querySelector(".btnContainer");
@@ -141,7 +142,7 @@ var restaurantSearch = function() {
 var recipeSearch = function() {
   typeSearch.textContent = "Search for a Recipe";
   inputOne.setAttribute("placeholder", "Search for a food");
-  inputTwo.style.display = "none";
+  cardTwo.style.display = "none";
 }
 
 restBtn.addEventListener("click", activateModal);

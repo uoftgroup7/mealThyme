@@ -6,15 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <!--Top Nav Bar for Logo and Search Functions-->
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="./index.html">
-                <img src="" width="" height="">
+                <img src="./assets/images/Logo2.png" width="auto" height="25">
             </a>
         </div>
 
@@ -29,10 +33,10 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light" id="restSearch">
+                    <a class="button is-outlined is-primary is-inverted" id="restSearch">
                         <strong>Restaurants</strong>
                     </a>
-                    <a class="button is-light" id="recipeSearch">
+                    <a class="button is-outlined is-primary is-inverted" id="recipeSearch">
                         <strong>Recipes</strong>
                     </a>
                     <div id="modal" class="modal">
@@ -43,8 +47,20 @@
                                 <button class="delete" aria-label="close" id="close1"></button>
                             </header>
                             <section class="modal-card-body">
-                                <input type="text" id="searchStuff" />
-                                <input type="text" id="distance" />
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <input class="input is-primary" type="text" id="searchStuff" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" id="distance">
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <input class="input is-primary" type="text" id="distance"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
                             <footer class="modal-card-foot">
                                 <button class="button is-success">Search</button>
@@ -57,10 +73,13 @@
         </div>
     </nav>
 
+    <!--Hero Section of any Additional Information To Display-->
+
+    <!--Results Section of Search-->
     <section class="section is-large">
-        
+
     </section>>
-    <script src="./js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
