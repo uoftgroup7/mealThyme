@@ -3,3 +3,7 @@
     background-size: cover;
     opacity: 0.4;
 }
+
+.hero-body {
+    opacity: 1;
+}

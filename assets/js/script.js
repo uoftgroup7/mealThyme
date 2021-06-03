@@ -76,7 +76,7 @@ var searchCall = function () {
     if (inputOne.value) {
       var inputTextRec = inputOne.value;
       locationCheck(inputTextRec, 0, 1);
-    } 
+    }
   }
 }
 
@@ -108,30 +108,32 @@ var selectSearch = function (value, dist, search, lat, lon) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          clearScreen();
           listRestaurants(data);
         })
       } else {
         errorMsg1.textContent = "Not a restuarants found, please try again.";
       }
-  })
-} else {
-  //call recipe api
-  var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
+    })
+  } else {
+    //call recipe api
+    var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
 
-  fetch(recApi).then(function (response) {
-    if(response.ok) {
-      response.json().then(function (data) {
-        console.log(data);
-        listRecipes(data);
-      })
-    } else {
-      errorMsg1.textContent = "No foods found, please try again.";
-    }
-  })
+    fetch(recApi).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          clearScreen();
+          listRecipes(data);
+        })
+      } else {
+        errorMsg1.textContent = "No foods found, please try again.";
+      }
+    })
   }
 }
 
-var listRestaurants = function(data) {
+var listRestaurants = function (data) {
   //run through and list first 10 restaurants found
   for (var i = 0; i < 10; i++) {
     var card = document.createElement('div');
@@ -156,8 +158,38 @@ var listRestaurants = function(data) {
 
 }
 
-var listRecipes = function(data) {
+var listRecipes = function (data) {
+  for (var i = 0; i < 5; i++) {
+    var cals = Math.ceil(data.hits[i].recipe.calories);
+    var name = data.hits[i].recipe.label;
+    var imgUrl = data.hits[i].recipe.image;
+    var recUrl = data.hits[i].recipe.url;
+    results.innerHTML += `
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-128x128px">
+        <img src=` + imgUrl +` alt="Cover Image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content" id="` + name  +`">
+        <div id="recpText"> `
+        + `${name}  - </br> ${cals} Calories` + `
+        </div>
+          <div>
+            <a href="` + recUrl + `" target="_blank">Click here for recipe</a>
+          </div>
+        </div>
+      </div>
+    </div>`
+  }
+}
 
+//function to remove all elements in the body
+var clearScreen = function () {
+  while (results.firstChild) {
+    results.removeChild(results.firstChild);
+  }
 }
 
 restBtn.addEventListener("click", activateModal);
