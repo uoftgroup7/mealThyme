@@ -1,4 +1,4 @@
-//header search buttons
+//navbar search buttons
 var restBtn = document.getElementById("restSearch");
 var recipeBtn = document.getElementById("recipeSearch");
 
@@ -13,6 +13,7 @@ var typeSearch = document.getElementById("searchType");
 var inputOne = document.getElementById("searchStuff");
 var cardTwo = document.getElementById("cardTwo")
 var inputTwo = document.getElementById("distance");
+var searchBtn = document.getElementById("searchBtn");
 
 var btnContainer = document.querySelector(".btnContainer");
 var containerRest = document.querySelector(".containerRest");
@@ -23,137 +24,81 @@ var restResult = document.querySelector(".restResult")
 var recipeResult = document.querySelector(".recipeResult")
 var goback = document.querySelector("#goback");
 
-function hideRestaurants() {
-  btnContainer.classList.remove("show");
-  btnContainer.classList.add("hide");
-  containerRest.classList.add("show");
-}
-function hideRecipe() {
-  btnContainer.classList.remove("show");
-  btnContainer.classList.add("hide");
-  containerRecipe.classList.add("show");
+//indicate if searching for restaurant or recipe
+var state = 0;
 
-}
-
-function listRestaurants(rest) {
-  goback.classList.add("show");
-  restResult.innerHTML = "";
-  for (var i = 0; i < 10; i++) {
-    var address = rest.hints[i].food.restaurant.address;
-    var postalCode = rest.hints[i].food.restaurant.postal;
-    restResult.innerHTML += `
-    <li>${address}  -  ${postalCode} </li>`
-  }
-
-}
-function listRecipes(recipe) {
-  goback.classList.add("show");
-  recipeResult.innerHTML = "";
-  for (var i = 0; i < 10; i++) {
-    var calorie = recipe.hits[i].recipe.calories;
-    var label = recipe.hits[i].recipe.label;
-    recipeResult.innerHTML += `
-    <li>${label}  - ${calorie} </li>`
-  }
-}
-
-function goBack() {
-  containerRest.classList.remove("show");
-  containerRecipe.classList.remove("show");
-  goback.classList.remove("show");
-  btnContainer.classList.remove("hide");
-
-  //clear results when going back
-  restResult.innerHTML = "";
-  recipeResult.innerHTML = "";
-
-}
-
-function bringRestaurants() {
-
-  var apiKey = "77b4c1d8-deba-4157-a707-5c0d63e2d0a7"
-  geoUrl = 'https://ipfind.co/me?auth=' + apiKey
-  fetch(geoUrl).then(function (response) {
-    // request was successful
-    if (response.ok) {
-      response.json().then(function (data) {
-        console.log(data);
-        // p.innerHTML = data.longitude
-        var id = "8288af20";
-        var key = "e13b76e5858a79ab9d586980b305da5a";
-        var lon = data.longitude;
-        var lat = data.latitude;
-        var searchTerm = document.querySelector("#rest").value;
-        var distance = document.querySelector("#dist").value;
-        var health = document.querySelector('#health').value;
-        if (health) {
-          var apiUrlRest = `https://api.edamam.com/api/menu-items/v2/search?q=${searchTerm}&lat=${lat}&lon=${lon}&dist=${distance}&health=${health}&app_id=${id}&app_key=${key}`
-        } else {
-          var apiUrlRest = `https://api.edamam.com/api/menu-items/v2/search?q=${searchTerm}&lat=${lat}&lon=${lon}&dist=${distance}&app_id=${id}&app_key=${key}`
-        }
-        // nested api
-        return fetch(apiUrlRest);
-      }).then(function (response) {
-        return response.json();
-      }).then(function (rest) {
-        console.log(rest)
-        listRestaurants(rest);
-      });
-    } else {
-      alert("Error: " + response.statusText);
-    }
-  });
-}
-
-function bringRecipe(recSearch) {
-
-  var recSearch = document.querySelector("#recipe").value;
-  var recipeApiKey = "5833503478a5c1d972dd59f1df3396f0"
-  var recipeId = "ec473133"
-  apiRecipe = `https://api.edamam.com/search?app_id=${recipeId}&app_key=${recipeApiKey}&q=${recSearch}`;
-  fetch(apiRecipe).then(function (response) {
-    // request was successful
-    if (response.ok) {
-      response.json().then(function (recipe) {
-        console.log(recipe);
-        listRecipes(recipe);
-      });
-    } else {
-      alert("Error: " + response.statusText);
-    }
-  });
-}
-
-var activateModal = function() {
+//open and close modal
+var activateModal = function () {
   modal1.classList.add("is-active", "is-clipped");
 }
 
-var deactivateModal = function() {
+var deactivateModal = function () {
   modal1.classList.remove("is-active", "is-clipped");
+  inputOne.value = "";
+  inputTwo.value = "";
+  cardTwo.style.display = "block";
 }
 
-var restaurantSearch = function() {
+//change display within modal depending on which button was clicked
+var restaurantModal = function () {
   typeSearch.textContent = "Search for a Restaurant Near You";
   inputOne.setAttribute("placeholder", "Search for a type of food");
   inputTwo.style.display = "block";
   inputTwo.setAttribute("placeholder", "Enter a distance (in miles)");
+  state = 0;
 }
 
-var recipeSearch = function() {
+var recipeModal = function () {
   typeSearch.textContent = "Search for a Recipe";
   inputOne.setAttribute("placeholder", "Search for a food");
   cardTwo.style.display = "none";
+  state = 1;
+}
+
+//search function called when search button is pressed
+var searchCall = function () {
+  if (state === 0) {
+    //error checking that user entered values
+    if (inputOne.value && inputTwo.value) {
+      var inputTextRest = inputOne.value;
+      var inputTextRest2 = inputTwo.value;
+      locationCheck(inputTextRest, inputTextRest2, 0);
+    } else if (inputOne.value && !inputTwo.value) {
+      inputTwo.setAttribute("placeholder", "Please enter a distance!");
+    } else if (!inputOne.value && inputTwo.value) {
+      inputOne.setAttribute("placeholder", "Please enter a type of food!");
+    }
+  } else {
+    if (inputOne.value) {
+      var inputTextRec = inputOne.value;
+      locationCheck(inputTextRec, 0, 1);
+    }
+  }
+}
+
+var locationCheck = function(input1, input2, search) {
+  var apiUrl = 'https://ipfind.co/me?auth=77b4c1d8-deba-4157-a707-5c0d63e2d0a7'
+
+  //get user location from IP address
+  fetch(apiUrl).then(function(response) {
+    //if response was successful
+    if(response.ok) {
+      response.json().then(function(data) {
+        var lon = data.longitude;
+        var lat = data.latitude;
+      })
+    }
+  })
+}
+
+var restSearch = function(value, dist, search, lat, lon) {
+
 }
 
 restBtn.addEventListener("click", activateModal);
-restBtn.addEventListener("click", restaurantSearch);
+restBtn.addEventListener("click", restaurantModal);
 recipeBtn.addEventListener("click", activateModal);
-recipeBtn.addEventListener("click", recipeSearch);
+recipeBtn.addEventListener("click", recipeModal);
 modalClose1.addEventListener("click", deactivateModal);
 modalClose2.addEventListener("click", deactivateModal);
-
-restBtn.addEventListener("click", hideRestaurants);
-recipeBtn.addEventListener("click", hideRecipe);
-searchRest.addEventListener("click", bringRestaurants);
-searchRecipe.addEventListener("click", bringRecipe);
-goback.addEventListener("click", goBack);
+searchBtn.addEventListener("click", searchCall);
