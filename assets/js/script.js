@@ -135,7 +135,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
 
 var listRestaurants = function (data) {
   //run through and list first 10 restaurants found
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 5; i++) {
     var card = document.createElement('div');
     card.classList = 'card';
 
@@ -183,6 +183,7 @@ var listRecipes = function (data) {
       </div>
     </div>`
   }
+  deactivateModal();
 }
 
 //function to remove all elements in the body

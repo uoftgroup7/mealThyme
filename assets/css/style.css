@@ -1,9 +1,9 @@
 .hero {
     background-image: url(../images/background.jpg);
     background-size: cover;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
-.hero-body {
+.card:hover {
     opacity: 1;
 }
