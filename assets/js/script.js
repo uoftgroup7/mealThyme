@@ -82,7 +82,7 @@ var searchCall = function () {
 
 //get user location from IP address
 var locationCheck = function (input1, input2, search) {
-  var apiUrl = 'https://ipfind.co/me?auth=77b4c1d8-deba-4157-a707-5c0d63e2d0a7'
+  var apiUrl = 'https://ipfind.co/me?auth=bfa145bd-e61e-42ba-9201-cba8041120d7'
 
   fetch(apiUrl).then(function (response) {
     //if response was successful
