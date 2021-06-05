@@ -14,8 +14,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/background.jpg);
-  background-repeat: no-repeat;
+  background-image: url('../images/background.jpg');
   background-size: cover;
   background-position: center center;
   filter: brightness(60%);
