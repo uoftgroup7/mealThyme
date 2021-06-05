@@ -47,35 +47,55 @@
 
   <body>
     <!--Top Nav Bar for Logo and Search Functions-->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <section class="header navbar">
       <div class="navbar-brand">
         <a class="navbar-item" href="./index.html">
           <img src="./assets/images/Logo2.png" width="auto" height="25" />
         </a>
       </div>
+    </section>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar"></div>
+      <div class="title">Meal Thyme</div>
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
+    
+      
+        <!--<div class="navbar-start">
           <p class="navbar-item">Buon Appetito!</p>
         </div>
       </div>
-
-      <div class="navbar-end">
-        <p class="navbar-item">Dine in or out?</p>
+      -->
+      <!--PLACE THESE BUTTONS IN A BOX IN THE HERO PAGE-->
+      <div class="navbar-end headerp">
         <div class="navbar-item">
+          <div class="buttons"> 
+            <a class="button is-outlined is-primary is-inverted" id="">
+              <strong>Change Location</strong></a>
+              <a class="button is-outlined is-primary is-inverted" id="">
+                <strong>Show Location</strong></a>
+              </div>
+          </div>
+        </div>
+        
+         <!-- take these in the main container-->
+        
           <div class="buttons">
-            <a
-              class="button is-outlined is-primary is-inverted"
+            <div class="navbar-item">
+              <div class="box-box">
+            <a class="button btn is-outlined is-primary is-inverted"
               id="restSearch"
             >
               <strong>Restaurants</strong>
             </a>
             <a
-              class="button is-outlined is-primary is-inverted"
+              class="button btn is-outlined is-primary is-inverted"
               id="recipeSearch"
             >
               <strong>Recipes</strong>
             </a>
+            </div>
+            </div>
+          </div>
             <div id="modal" class="modal">
               <div class="modal-background"></div>
               <div class="modal-card">
@@ -147,7 +167,8 @@
                       </div>
                     </div>
                   </div>
-                </section>
+                  
+                
                 <footer class="modal-card-foot">
                   <button class="button is-primary" id="searchBtn">
                     Search
@@ -158,14 +179,19 @@
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+        
+      
+      </nav>
+      
+    
     <!--Hero Section of any Additional Information To Display-->
 
     <!--Results Section of Search-->
     <section class="hero is-fullheight-with-navbar">
+     <div class="container">
       <div class="hero-body" id="resultBody">
-        <p class="title">Meal Thyme</p>
+        <div class="box"
+        <p class="subtitle">Buon Appetito!</p>
         <p class="subtitle">
           Let us help you decide whats on the menu whether you want to dine in
           or out, we've got you covered! Choose between recipe options for
@@ -173,7 +199,9 @@
           preference at your prefered distance of travel. You figure out the we
           will take care of the rest!
         </p>
+      </div>
         <!--Search Results Posted/Created Here-->
+      </div>
       </div>
     </section>
 
