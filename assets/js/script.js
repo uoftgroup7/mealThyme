@@ -260,3 +260,12 @@ var selectSearch = function (value, dist, search, lat, lon) {
     alert("click")
   };
 });
+
+
+
+
+
+
+
+
+
