@@ -19,11 +19,9 @@
     padding-top: 10px;
     width: 100%;
     color: red;
-    /* background-color: green; */
 }
 
 .card-content {
-    /* background-color:yellow; */
     text-decoration: none;
     justify-content: space-between;
     text-align: center;
@@ -33,12 +31,10 @@
 
 #linkContent {
     padding-top:1rem;
-    /* background-color: greenyellow; */
 }
 
 #linkContent a{
     text-decoration: none;
-    /* color:gray; */
 }
 
 
