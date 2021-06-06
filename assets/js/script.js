@@ -138,7 +138,7 @@ var searchCall = function (histBtn) {
 
 //get user location from IP address
 var locationCheck = function (input1, input2, search) {
-  var apiUrl = 'https://ipfind.co/me?auth=b00ff459-9e02-42ef-be47-441a13d324b4'
+  var apiUrl = 'https://ipfind.co/me?auth=77b4c1d8-deba-4157-a707-5c0d63e2d0a7'
 
   fetch(apiUrl).then(function (response) {
     // if response was successful
@@ -191,15 +191,21 @@ var selectSearch = function (value, dist, search, lat, lon) {
   }
 }
 
-  //list restaunts 
-  var listRestaurants = function (data) {
-    //run through and list first 10 restaurants found
-    for (var i = 0; i < 5; i++) {
-      var card = document.createElement('div');
-      card.classList = 'card';
-      restName = data.hints[i].food.restaurant.address;
-      restLoc = data.hints[i].food.restaurant.postal;
-      results.innerHTML += `
+//list restaunts 
+var listRestaurants = function (data) {
+  //run through and list first 10 restaurants found
+  for (var i = 0; i < 5; i++) {
+    var card = document.createElement('div');
+    card.classList = 'card';
+
+    //two p tags for restaurant name and location
+    var restName = document.createElement('p');
+    var restLoc = document.createElement('p');
+
+    //define where to get information from
+    restName = data.hints[i].food.restaurant.address;
+    restLoc = data.hints[i].food.restaurant.postal;
+    results.innerHTML += `
     <div id="cardResult" class="card" >
       <div class="card-image">
         <figure class="image is-128x128px">
@@ -209,28 +215,37 @@ var selectSearch = function (value, dist, search, lat, lon) {
       <div id="cardContent" class="card-content">
         <div class="content">
           <div id="recpText"> `
-        + `${restName} <br><br> ${restLoc}` + `
+      + `${restName} <br><br> ${restLoc}` + `
           </div>
           <br>
         </div>
       </div>
     </div>`
-      deactivateModal();
-    }
-  
+
+    var text1 = document.createTextNode(restName);
+    var text2 = document.createTextNode(restLoc);
+
+    //add to card element created above
+    card.appendChild(text1);
+    card.appendChild(text2);
+    //add card to hero body
+    results.appendChild(card);
+    deactivateModal();
   }
 
-  var listRecipes = function (data) {
-    maxLengh = data.hits.length
-    randomIndx = Math.floor((Math.random() * (maxLengh-6)) + 1);
-    console.log(maxLengh + " " + randomIndx);
-    for (var i = randomIndx; i < (randomIndx + 5); i++) {
-      var cals = Math.ceil(data.hits[i].recipe.calories);
-      var name = data.hits[i].recipe.label;
-      var imgUrl = data.hits[i].recipe.image;
-      var recUrl = data.hits[i].recipe.url;
-      var sourcePage = data.hits[i].recipe.source;
-      results.innerHTML += `
+}
+
+var listRecipes = function (data) {
+  maxLengh = data.hits.length
+  randomIndx = Math.floor((Math.random() * (maxLengh - 6)) + 1);
+  console.log(maxLengh + " " + randomIndx);
+  for (var i = randomIndx; i < (randomIndx + 5); i++) {
+    var cals = Math.ceil(data.hits[i].recipe.calories);
+    var name = data.hits[i].recipe.label;
+    var imgUrl = data.hits[i].recipe.image;
+    var recUrl = data.hits[i].recipe.url;
+    var sourcePage = data.hits[i].recipe.source;
+    results.innerHTML += `
     <div id="cardResult" class="card" >
       <div class="card-image">
         <figure class="image is-128x128px">
