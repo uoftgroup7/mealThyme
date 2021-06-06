@@ -159,7 +159,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
   //change which search is used depending on restaurant or recipe clicked
   if (search === 0) {
     //call restaurant api
-    var restApi = 'https://api.edamam.com/api/menu-items/v2/search?q=' + value + '&lat=' + lat + '&lon=' + lon + '&dist=' + dist + '&app_id=648fe084&app_key=056e6c65fe4ba4c7bf9aa4d6449680cf';
+    var restApi = 'https://api.edamam.com/api/menu-items/v2/search?q=' + value + '&lat=' + lat + '&lon=' + lon + '&dist=' + dist + '&app_id=8288af20&app_key=e13b76e5858a79ab9d586980b305da5a';
 
     fetch(restApi).then(function (response) {
       if (response.ok) {
@@ -174,12 +174,8 @@ var selectSearch = function (value, dist, search, lat, lon) {
     })
   } else {
     //call recipe api
-    var recApi = 'https://api.edamam.com/search?q=' 
-    + value 
-    + '&cuisineType=' + diet.value.toLowerCase()
-    + '&mealType=' + meal.value.toLowerCase()
-    + '&app_id=648fe084&app_key=056e6c65fe4ba4c7bf9aa4d6449680cf'
-    
+    var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
+
     fetch(recApi).then(function (response) {
       console.log(response)
       if (response.ok) {

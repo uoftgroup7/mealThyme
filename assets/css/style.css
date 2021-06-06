@@ -14,7 +14,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../images/background.jpg');
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   filter: brightness(60%);
@@ -30,6 +31,9 @@
   position: relative;
 }
 
+.card {
+  margin: 15px 15px;
+}
 .navbar {
   display: block;
   background-color: transparent;
@@ -47,8 +51,6 @@
   font-size: 25px;
   font-family: fantasy;
 }
-
-
 
 /* my css change  */
 #historyButton {
