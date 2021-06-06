@@ -50,16 +50,13 @@
 
   <body>
     <!--Top Nav Bar for Logo and Search Functions-->
-    <section class="header navbar">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="./index.html">
-          <img src="assets/images/Logo2.png" width="auto" height="150px" />
+    <nav class="navbar " aria-label="main navigation">
+      <div class="title">
+        <a class= href="./index.html">
+          <img src="assets/images/Logo2.png" width="auto" height="200px" />
         </a>
+        Meal Thyme
       </div>
-    </section>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar"></div>
-      <div class="title">Meal Thyme</div>
 
     
       
@@ -71,11 +68,8 @@
       <div class="navbar-end headerp">
         <div class="navbar-item">
           <div class="buttons"> 
-            <a class="button is-outlined is-primary is-inverted" id="">
-              <strong>Change Location</strong></a>
-              <a class="button is-outlined is-primary is-inverted" id="">
-                <strong>Show Location</strong></a>
-              </div>
+                <p>Show Location</p>
+            </div>
           </div>
         </div>
         
@@ -84,22 +78,26 @@
           <div class="buttons center">
             <div class="centerone">
               <div class="centerone text pb-6">
-                <h1 class="text has-text-white pb-6 pt-6 is-size-2">Choose an option</h1>
-                
-                <p class="text has-text-white pb-6 is-size-5">Dine in or out?</p>
-            <a class="button btn is-large is-white is-hovered "
-              id="restSearch"
-            >
-              <strong>Restaurants</strong>
-            </a>
-            <a
-              class="button btn is-hovered is-large is-white"
-              id="recipeSearch">
-              <strong>Recipes</strong>
-            </a>
-            </div>
+                <h1 class="text has-text-white pb-6 pt-6 is-size-2 has-text-centered">Choose an option</h1>
+                <p class="text has-text-white pb-6 is-size-5 has-text-centered">Dine in or out?</p>
+                <a class="button btn is-large is-white is-hovered  "
+                    id="restSearch">
+                  <strong>Restaurants</strong>
+                </a>
+                <a class="button btn is-hovered is-large is-white"
+                id="recipeSearch">
+                <strong>Recipes</strong>
+               </a>
+              </div>
             </div>
           </div>
+          
+          <div id=resultDisplay>
+            
+
+          </div>
+
+          
             <div id="modal" class="modal">
               <div class="modal-background"></div>
               <div class="modal-card">

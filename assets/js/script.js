@@ -19,13 +19,14 @@ var cardTwo = document.getElementById("cardTwo")
 var inputTwo = document.getElementById("distance");
 var searchBtn = document.getElementById("searchBtn");
 
-//target for cards to be created into
+// target for cards to be created into
 var results = document.getElementById("resultBody");
 
 //search button history 
 var searchHistoryBtn = document.getElementById("searchHistoryBtn");
 var  displayCont = document.createElement("div");
 
+// get values from drop down
 var diet = document.getElementById("diet")
 var meal = document.getElementById("meal")
 
@@ -52,8 +53,8 @@ if (!searchLS) {
 }else {
   searchArray = JSON.parse(searchLS);
 }
-//done
-console.log(stateHistory)
+
+
 //open and close modal
 var activateModal = function () {
   modal1.classList.add("is-active", "is-clipped");
@@ -66,13 +67,13 @@ var deactivateModal = function () {
   errorMsg1.textContent = "";
   errorMsg2.textContent = "";
   guideMsg1.textContent = "";
-  guideMsg2.textContent = "";
+  guideMsg2.textContent =
+   "";
   cardTwo.style.display = "block";
 }
 
 //change display within modal depending on which button was clicked
 var restaurantModal = function () {
-  showHistoryBtn();
   typeSearch.textContent = "Search for a Restaurant Near You";
   guideMsg1.textContent = "Search for a type of food";
   inputTwo.style.display = "block";
@@ -90,7 +91,6 @@ var recipeModal = function () {
 
 //search function called when search button is pressed
 var searchCall = function (histBtn) {
-  alert(stateHistory)
   errorMsg1.textContent = "";
   errorMsg2.textContent = "";
   if (state === 0) {
@@ -116,12 +116,10 @@ var searchCall = function (histBtn) {
     if (inputOne.value) {
       if(stateHistory===1) {
         inputTextRec = histBtn;
-        alert("History Button Clicked " + stateHistory);
         searchBtnClick();
         locationCheck(inputTextRec, 0, 1);
         stateHistory =0; //rest value
       } else {
-        alert("History button not clicked");
         inputTextRec = inputOne.value;
         searchBtnClick();
         locationCheck(inputTextRec, 0, 1);
@@ -130,7 +128,6 @@ var searchCall = function (histBtn) {
     } else {
       if(stateHistory===1) {
         inputTextRec = histBtn;
-        alert("History Button Clicked " + stateHistory);
         searchBtnClick();
         locationCheck(inputTextRec, 0, 1);
         stateHistory =0; //rest value
@@ -174,7 +171,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
     })
   } else {
     //call recipe api
-    var recApi = 'https://api.edamam.com/search?q=' + value + '&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
+    var recApi = 'https://api.edamam.com/search?q=' + value + '&to=40&app_id=ec473133&app_key=5833503478a5c1d972dd59f1df3396f0';
 
     fetch(recApi).then(function (response) {
       console.log(response)
@@ -221,10 +218,9 @@ var selectSearch = function (value, dist, search, lat, lon) {
   }
 
   var listRecipes = function (data) {
-    console.log(diet.value)
-    console.log(meal.value)
     maxLengh = data.hits.length
     randomIndx = Math.floor((Math.random() * (maxLengh-6)) + 1);
+    alert(maxLengh + " " + randomIndx)
     for (var i = randomIndx; i < (randomIndx + 5); i++) {
       var cals = Math.ceil(data.hits[i].recipe.calories);
       var name = data.hits[i].recipe.label;
@@ -321,11 +317,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
   //moreBtn.addEventListener("click");
   document.body.addEventListener( 'click', function ( event ) {
   if( event.target.id == 'historyButton' ) {
-    stateHistory =1;
+    stateHistory=1;
     searchCall(event.target.innerHTML);
-  };
-  if( event.target.id == 'moreBtn' ) {
-    alert("click")
-    listRecipes(saveRec)
   };
 });
