@@ -229,6 +229,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
       var name = data.hits[i].recipe.label;
       var imgUrl = data.hits[i].recipe.image;
       var recUrl = data.hits[i].recipe.url;
+      var sourcePage = data.hits[i].recipe.source;
       results.innerHTML += `
     <div id="cardResult" class="card" >
       <div class="card-image">
@@ -239,15 +240,13 @@ var selectSearch = function (value, dist, search, lat, lon) {
       </div>
       <div id="cardContent" class="card-content">
         <div class="content" id="` + name + `">
-          <div id="recpText"> `
-        + `${name} <br><br> ${cals} Calories` + `
-          </div>
-          <br>
-          <div>
-            <a href="` + recUrl + `" target="_blank">Click here for recipe</a>
-          </div>
+        <div>
+            <a href="` + recUrl + `" target="_blank">` + sourcePage + `</a>
+          </div>  
+        <div id="recpText"><strong> `
+      + `${name} </strong><br><br> ${cals} Calories` + `
+          </div>          
         </div>
-      </div>
     </div>`
     }
     deactivateModal();
