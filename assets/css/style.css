@@ -37,7 +37,7 @@
 .navbar {
   display: block;
   background-color: transparent;
-  opacity: 1;
+  opacity: 0.9;
   position: absolute;
   top: 0;
   left: 0;
@@ -105,7 +105,7 @@
 } 
 
 #resultBody {
- padding-top: 500px;
+ padding-top: 650px;
  align-items:flex-start;
 }
 
