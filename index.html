@@ -6,133 +6,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"/>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.css"/>
     <title>Food Center</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
+
   <body>
-    <header class="hero is-small middle">
-        
-     <div class="hero-head">
-            <nav class="navbar">
-              <div class="container">
-                <div class="navbar-brand">
-                  <a class="navbar-item">
-                    <figure class="image is-128x128">
-                    <img src="eada89c8c4c84b4ebdfc3b8d152a18c3.png" alt="Logo">
-                    </figure>
-                  </a>
-                </span>
+    <!--Top Nav Bar for Logo and Search Functions-->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./index.html">
+          <img src="./assets/images/eada89c8c4c84b4ebdfc3b8d152a18c3.png" width="auto" height="25" />
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <p class="navbar-item">Buon Appetito!</p>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <p class="navbar-item">Dine in or out?</p>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a
+              class="button is-outlined is-primary is-inverted"
+              id="restSearch">
+              <strong>Restaurants</strong>
+            </a>
+            <a
+              class="button is-outlined is-primary is-inverted"
+              id="recipeSearch"
+            >
+              <strong>Recipes</strong>
+            </a>
+            <div id="modal" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title" id="searchType">
+                    Search placeholder
+                  </p>
+                 
+                  <button
+                    class="delete"
+                    aria-label="close"
+                    id="close1"
+                  ></button>
+                </header>
+                <section class="modal-card-body">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        <p
+                          class="is-normal has-text-primary"
+                          id="inputGuide1"
+                        ></p>
+                        <input
+                          class="input is-primary"
+                          type="text"
+                          id="searchStuff"
+                        />
+                        <div id="searchHistoryBtn"></div>
+                        <p class="is-normal has-text-danger" id="errorMsg1"></p>
+                      </div>
+                    </div>
                   </div>
-                  <span class="navbar-burger" data-target="navbarMenuHeroB">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
-                </div>
-                <div id="navbarMenuHeroB" class="navbar-menu">
-                  <div class="navbar-end">
-                    <a class="navbar-item is-active">
-                      Home
-                    </a>
-                    <a class="navbar-item is-active">
-                      PlaceHolder
-                    </a>
-                    <a class="navbar-item is-active">
-                      PlaceHolder
-                    </a>
+                  <div class="card" id="cardTwo">
+                    <div class="card-content">
+                      <div class="content">
+                        <p
+                          class="is-normal has-text-primary"
+                          id="inputGuide2"
+                        ></p>
+                        <input
+                          class="input is-primary"
+                          type="text"
+                          id="distance"/>
+                        <p class="is-normal has-text-danger" id="errorMsg2"></p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div class="card">
+                    <div class="dropdown is-active">
+                      <p>Meal Type</p>
+                      <div class="select is-primary is-small">
+                        <select id="meal">
+                          <option>Lunch</option>
+                          <option>Dinner</option>
+                          <option>Breakfast</option>
+                          <option>Snack</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="dropdown is-active">
+                      <p>Dish Type</p>
+                      <div class="select is-primary is-small">
+                        <select id="diet">
+                          <option>American</option>
+                          <option>Asian</option>
+                          <option>British</option>
+                          <option>Caribbean</option>
+                          <option>Chinese</option>
+                          <option>French</option>
+                          <option>Indian</option>
+                          <option>Kosher</option>
+                          <option>Mediterranean</option>
+                          <option>Mexican</option>
+                          <option>Middle Eastern</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-primary" id="searchBtn">
+                    Search
+                  </button>
+                  <button class="button" id="close2">Cancel</button>
+                </footer>
               </div>
-            </nav>
-          </div>
-        
-          <div class="hero-body">
-            <div class="container has-text-centered">
-              <h1 class="title">
-                Buon Appetito
-              </h1>
-              <h2 class="subtitle">
-                Dine in or dine out?
-              </h2>
             </div>
           </div>
-    </header>
-    <section class="section is-large">
-        <div class="box">
-        <h2>Let us help you decide whats on the menu whether you want to dine in or out, we've got you 
-          covered! Choose between recipe options for do-it-youself or dine out with tons of local venues tailored to your preference at your prefered distance of travel. 
-           You figure out the  we will take care of the rest!
-        </h2>
         </div>
-     
-    
-      
-      <div class="btnContainer">
-         
-        <button class="restBtn btns button is-large is-primary is-outlined">Search Restaurant</button>
-        
-        
-        <button class="recipeBtn btns button is-large is-primary is-outlined">Search Recipe</button>
-        
+      </div>
+    </nav>
+    <!--Hero Section of any Additional Information To Display-->
+
+    <!--Results Section of Search-->
+    <section class="hero is-fullheight-with-navbar">
+      <div class="hero-body" id="resultBody">
+        <p class="title">Meal Thyme</p>
+        <p class="subtitle">
+          Let us help you decide whats on the menu whether you want to dine in
+          or out, we've got you covered! Choose between recipe options for
+          do-it-youself or dine out with tons of local venues tailored to your
+          preference at your prefered distance of travel. You figure out the we
+          will take care of the rest!
+        </p>
+        <!--Search Results Posted/Created Here-->
       </div>
       
-      
-    
-    
-    <div class="containerRest hide">
-      <div class="btnContainer">
-      <div>
-        <label for="rest">Restaurant Type</label>
-        <input type="text" id="rest" name="rest" /><br /><br />
-        <label for="dist">Distance</label>
-        <input type="text" id="dist" name="dist" /><br /><br />
-
-        <label for="health">Health Label:</label>
-        <select name="health" id="health">
-          <option value="">Please choose an option</option>
-          <option value="vegan">vegan</option>
-          <option value="vegetarian">vegetarian</option>
-          <option value="gluten-free">gluten-free</option>
-        </select>
-        <button class="searchRest">Search</button>
-      </div>
-      <div class="restResult"></div>
-    </div>
-    </div>
-
-    <div class="containerRecipe hide">
-      <div class="btnContainer">
-      <div>
-        <label for="recipe">Search for a recipe</label>
-        <input
-          type="text"
-          id="recipe"
-          name="recipe"
-          placeholder=" enter food name"
-          autofocus="true"
-        />
-        <button class="searchRecipe" type="click">Search</button>
-      </div>
-      <div class="recipeResult"></div>
-    </div>
-    </div>
-
-    <div>
-      <button id="goback" class="hide" >go back!</button>
-    </div>
     </section>
-
-    <script src="./js/script.js"></script>
-    </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
+
+gi
