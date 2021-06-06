@@ -202,18 +202,8 @@ var listRestaurants = function (data) {
         </div>
       </div>
     </div>`
-
-    var text1 = document.createTextNode(restName);
-    var text2 = document.createTextNode(restLoc);
-
-    //add to card element created above
-    card.appendChild(text1);
-    card.appendChild(text2);
-    //add card to hero body
-    results.appendChild(card);
     deactivateModal();
   }
-<<<<<<< HEAD
 
 }
 
@@ -228,18 +218,6 @@ var listRecipes = function (data) {
     var recUrl = data.hits[i].recipe.url;
     var sourcePage = data.hits[i].recipe.source;
     results.innerHTML += `
-=======
-  var listRecipes = function (data) {
-    maxLengh = data.hits.length
-    randomIndx = Math.floor((Math.random() * (maxLengh-6)) + 1);
-   
-    for (var i = randomIndx; i < (randomIndx + 5); i++) {
-      var cals = Math.ceil(data.hits[i].recipe.calories);
-      var name = data.hits[i].recipe.label;
-      var imgUrl = data.hits[i].recipe.image;
-      var recUrl = data.hits[i].recipe.url;
-      results.innerHTML += `
->>>>>>> f309d769c0281c633a6af6ca1b6822df88bc6a58
     <div id="cardResult" class="card" >
       <div class="card-image">
         <figure class="image is-128x128px">
