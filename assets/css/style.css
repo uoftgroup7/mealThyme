@@ -52,9 +52,12 @@
   font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 .title {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
   text-align: center;
-  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 46px;
+  /* font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 46px; */
   color: white;
   padding-top: 20px;
 }
