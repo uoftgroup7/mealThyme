@@ -178,8 +178,7 @@ var selectSearch = function (value, dist, search, lat, lon) {
     + value 
     + '&cuisineType=' + diet.value.toLowerCase()
     + '&mealType=' + meal.value.toLowerCase()
-    + '&to=40&app_id=' + apId 
-    + '&app_key='+ apKey;
+    + '&app_id=648fe084&app_key=056e6c65fe4ba4c7bf9aa4d6449680cf'
     
     fetch(recApi).then(function (response) {
       console.log(response)

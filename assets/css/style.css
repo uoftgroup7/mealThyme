@@ -70,3 +70,11 @@
  padding-top: 200px;
  align-items:flex-start;
 }
+
+.dropdown {
+  margin-right: 10px;
+}
+
+select{
+  margin-left: 10px;
+}
