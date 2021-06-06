@@ -141,7 +141,7 @@ var searchCall = function (histBtn) {
 
 //get user location from IP address
 var locationCheck = function (input1, input2, search) {
-  var apiUrl = 'https://ipfind.co/me?auth=bfa145bd-e61e-42ba-9201-cba8041120d7'
+  var apiUrl = 'https://ipfind.co/me?auth=b00ff459-9e02-42ef-be47-441a13d324b4'
 
   fetch(apiUrl).then(function(response) {
     // if response was successful
