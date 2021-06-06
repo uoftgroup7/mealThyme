@@ -30,9 +30,6 @@
   position: relative;
 }
 
-.card {
-  margin: 15px 15px;
-}
 .navbar {
   display: block;
   background-color: transparent;
@@ -51,9 +48,25 @@
   font-family: fantasy;
 }
 
-.hours-modal {
-  overflow: visible;
+
+
+/* my css change  */
+#historyButton {
+  margin-top: 10px;
 }
-  .modal-card-body {
-    overflow: visible;
-  }
+
+#cardResult {
+  margin: 15px 15px;
+  min-height:400px;
+}
+
+#cardContent{
+  width: 200px;
+  margin:0;
+  padding:5px;
+} 
+
+#resultBody {
+ padding-top: 200px;
+ align-items:flex-start;
+}
