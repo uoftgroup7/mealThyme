@@ -197,24 +197,27 @@ var selectSearch = function (value, dist, search, lat, lon) {
     for (var i = 0; i < 5; i++) {
       var card = document.createElement('div');
       card.classList = 'card';
-
-      //two p tags for restaurant name and location
-      var restName = document.createElement('p');
-      var restLoc = document.createElement('p');
-      //define where to get information from
       restName = data.hints[i].food.restaurant.address;
       restLoc = data.hints[i].food.restaurant.postal;
-      var text1 = document.createTextNode(restName);
-      var text2 = document.createTextNode(restLoc);
-
-      //add to card element created above
-      card.appendChild(text1);
-      card.appendChild(text2);
-      //add card to hero body
-      results.appendChild(card);
+      results.innerHTML += `
+    <div id="cardResult" class="card" >
+      <div class="card-image">
+        <figure class="image is-128x128px">
+          <img src="./assets/images/Logo2.png" alt="Cover Image">
+        </figure>
+      </div>
+      <div id="cardContent" class="card-content">
+        <div class="content">
+          <div id="recpText"> `
+        + `${restName} <br><br> ${restLoc}` + `
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>`
       deactivateModal();
     }
-
+  
   }
 
   var listRecipes = function (data) {
