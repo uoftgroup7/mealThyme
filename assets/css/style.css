@@ -1,6 +1,7 @@
 .body {
   margin: 0;
   padding: 0;
+
 }
 .hero {
   position: relative;
@@ -26,9 +27,11 @@
   min-width: 100%;
   min-height: 100%;
   position: relative;
+
 }
 .hero-content {
   position: relative;
+
 }
 
 .card {
@@ -50,6 +53,7 @@
   font-weight: bold;
   font-size: 25px;
   font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .title {
   font-family: 'Kaushan Script', cursive;
@@ -59,11 +63,12 @@
   /* font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   font-size: 46px; */
   color: white;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 .headerp {
   border-bottom: 2px outset white;
   margin-bottom: 10px;
+
 }
 .fonts {
   font-size: 20px;
@@ -80,6 +85,7 @@
   /*background-color: transparent; */
   font-size: 20px;
   font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .center {
   width: 50%;
@@ -105,8 +111,9 @@
 } 
 
 #resultBody {
- padding-top: 500px;
+ padding-top: 650px;
  align-items:flex-start;
+
 }
 
 .dropdown {
