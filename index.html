@@ -31,14 +31,9 @@
       </a>
       Meal Thyme
     </div>
-
-
-
-
     </div>
 
     <!--PLACE THESE BUTTONS IN A BOX IN THE HERO PAGE-->
-
     <div class="navbar-end headerp">
       <div class="navbar-item">
         <div class="buttons">
@@ -48,7 +43,6 @@
     </div>
 
     <!-- take these in the main container-->
-
     <div class="buttons center">
       <div class="centerone">
         <div class="centerone text pb-6">
@@ -65,10 +59,7 @@
     </div>
 
     <div id=resultDisplay>
-
-
     </div>
-
 
     <div id="modal" class="modal">
       <div class="modal-background"></div>
@@ -100,52 +91,90 @@
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="dropdown is-active">
-              <p>Meal Type</p>
-              <div class="select is-primary is-small">
-                <select id="meal">
-                  <option>Lunch</option>
-                  <option>Dinner</option>
-                  <option>Breakfast</option>
-                  <option>Snack</option>
-                </select>
-              </div>
-            </div>
-            <div class="dropdown is-active">
-              <p>Dish Type</p>
-              <div class="select is-primary is-small">
-                <select id="diet">
-                  <option>American</option>
-                  <option>Asian</option>
-                  <option>British</option>
-                  <option>Caribbean</option>
-                  <option>Chinese</option>
-                  <option>French</option>
-                  <option>Indian</option>
-                  <option>Kosher</option>
-                  <option>Mediterranean</option>
-                  <option>Mexican</option>
-                  <option>Middle Eastern</option>
-                </select>
-              </div>
+
+          <div id="modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title" id="searchType">
+                  Search placeholder
+                </p>
+                <button class="delete" aria-label="close" id="close1">
+                </button>
+              </header>
+              <section class="modal-card-body">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="content">
+                      <p class="is-normal has-text-primary" id="inputGuide1"></p>
+                      <input class="input is-primary" type="text" id="searchStuff" />
+                      <div id="searchHistoryBtn"></div>
+                      <p class="is-normal has-text-danger" id="errorMsg1"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card" id="cardTwo">
+                  <div class="card-content">
+                    <div class="content">
+                      <p class="is-normal has-text-primary" id="inputGuide2"></p>
+                      <input class="input is-primary" type="text" id="distance" />
+                      <p class="is-normal has-text-danger" id="errorMsg2"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="dropdown is-active">
+                    <p>Meal Type</p>
+                    <div class="select is-primary is-small">
+                      <select id="meal">
+                        <option>Lunch</option>
+                        <option>Dinner</option>
+                        <option>Breakfast</option>
+                        <option>Snack</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="dropdown is-active">
+                    <p>Dish Type</p>
+                    <div class="select is-primary is-small">
+                      <select id="diet">
+                        <option>American</option>
+                        <option>Asian</option>
+                        <option>British</option>
+                        <option>Caribbean</option>
+                        <option>Chinese</option>
+                        <option>French</option>
+                        <option>Indian</option>
+                        <option>Kosher</option>
+                        <option>Mediterranean</option>
+                        <option>Mexican</option>
+                        <option>Middle Eastern</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <footer class="modal-card-foot">
+                  <button class="button is-primary" id="searchBtn">
+                    Search
+                  </button>
+                  <button class="button" id="close2">Cancel</button>
+                </footer>
             </div>
           </div>
-
-          <footer class="modal-card-foot">
-            <button class="button is-primary" id="searchBtn">
-              Search
-            </button>
-            <button class="button" id="close2">Cancel</button>
-          </footer>
       </div>
-    </div>
-    </div>
-    </div>
 
-
+      <footer class="modal-card-foot">
+        <button class="button is-primary" id="searchBtn">
+          Search
+        </button>
+        <button class="button" id="close2">Cancel</button>
+      </footer>
+    </div>
+    </div>
+    </div>
+    </div>
   </nav>
-
 
   <!--Hero Section of any Additional Information To Display-->
 
