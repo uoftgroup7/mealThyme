@@ -217,6 +217,7 @@ var listRecipes = function (data) {
     var imgUrl = data.hits[i].recipe.image;
     var recUrl = data.hits[i].recipe.url;
     var sourcePage = data.hits[i].recipe.source;
+    var portionSize = data.hits[i].recipe.yield;
     results.innerHTML += `
     <div id="cardResult" class="card" >
       <div class="card-image">
@@ -226,13 +227,12 @@ var listRecipes = function (data) {
         </figure>
       </div>
       <div id="cardContent" class="card-content">
-        <div class="content" id="` + name + `">
-          <div id="recpText"> `
-        + `${name} <br><br> ${cals} Calories` + `
-          </div>
-          <br>
           <div>
-            <a href="` + recUrl + `" target="_blank">Click here for recipe</a>
+            <a href="` + recUrl + `" target="_blank">` + sourcePage + `</a>
+          </div>
+        <div class="content" id="` + name + `">
+          <div id="recpText"><strong> `
+        + `${name} </strong><br><br> ${cals} Calories` + `<br>Portions: ` + portionSize + `
           </div>
         </div>
       </div>
