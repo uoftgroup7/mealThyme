@@ -18,6 +18,7 @@ var inputTwo = document.getElementById("distance");
 var searchBtn = document.getElementById("searchBtn");
 // target for cards to be created into
 var results = document.getElementById("resultBody");
+var cityFind = document.querySelector(".cityFind");
 //search button history 
 var searchHistoryBtn = document.getElementById("searchHistoryBtn");
 var  displayCont = document.createElement("div");
@@ -131,6 +132,7 @@ var locationCheck = function (input1, input2, search) {
         var lon = data.longitude;
         var lat = data.latitude;
         selectSearch(input1, input2, search, lat, lon);
+        cityFind.innerHTML = data.city;
       })
     }
   })
