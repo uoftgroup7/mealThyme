@@ -150,12 +150,18 @@ select{
   }
 }
 
-
+@media screen and (max-width: 1200px) {  
+  .hero::before {
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+}
 
 
 @media screen and (max-width: 1024px) {
   #cardResult {
-    margin: 0;
+    margin: 15px auto;
     min-height:400px;
   }
 
@@ -177,6 +183,12 @@ select{
     font-size: 10px;
     color: white;
   }
+
+  .hero {
+    height: 100%;
+    width: 100%;
+  }
+  
   #resultBody {
     padding-top: 800px;
     align-items:flex-start;
@@ -185,6 +197,15 @@ select{
    .cityFind{
     text-align: center;
   }
+
+  .container {
+    margin: 15px;
+  }
+
+  .card {
+    width: 60%;
+  }
+
   .navbar-item {
     color: white;
     font-weight: bold;
@@ -208,6 +229,11 @@ select{
     font-size: 10px;
     color: white;
   }
+
+  .centerone {
+    text-align: center;
+  }
+
   #resultBody {
     padding-top: 800px;
     align-items:flex-start;
