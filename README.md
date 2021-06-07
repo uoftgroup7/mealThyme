@@ -30,7 +30,7 @@ A website where users can choose whether they want to search for a food recipe o
 * Zohaib
 * Zeid
 * Tony
-* Kenson
+
 
 ## Final Results
 
