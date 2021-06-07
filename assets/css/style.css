@@ -150,6 +150,18 @@ select{
   }
 }
 
+
+
+
+@media screen and (max-width: 1024px) {
+  #cardResult {
+    margin: 0;
+    min-height:400px;
+  }
+
+
+
+}
 @media screen and (max-width: 755px) {
   .title {
     font-family: 'Kaushan Script', cursive;
@@ -172,6 +184,12 @@ select{
    }
    .cityFind{
     text-align: center;
+  }
+  .navbar-item {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   }
 }
 /*MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER- 655*/
@@ -197,5 +215,11 @@ select{
    }
   .cityFind{
     text-align: center;
+  }
+  .navbar-item {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   }
 }
