@@ -35,7 +35,7 @@ A website where users can choose whether they want to search for a food recipe o
 ## Final Results
 
 ### Main landing page
-<img src="./assets/images/homePage.jpg" alt="Main landing page" />
+<img src="./assets/images/homePage.png" alt="Main landing page" />
 
 ### Recipe Results
 <img src="./assets/images/RecipeSearch.jpg" alt="Recipe results page" />
