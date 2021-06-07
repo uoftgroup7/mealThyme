@@ -1,4 +1,4 @@
-Page Link : https://uoftgroup7.github.io/mealThyme/
+### Website: https://uoftgroup7.github.io/mealThyme/
 
 # Recipe and Restaurant Locator
 A website where users can choose whether they want to search for a food recipe or a restaurant near them based on type of food.
@@ -22,8 +22,6 @@ A website where users can choose whether they want to search for a food recipe o
 * Edamam API (https://www.edamam.com/)
 * ipFind API (https://ipfind.com/docs/)
 
-### Website
-
 ## Contributors
 * Tugrul
 * Sarah
@@ -42,6 +40,9 @@ A website where users can choose whether they want to search for a food recipe o
 
 ### Restaurant Results
 <img src="./assets/images/RestaurantSearch.jpg" alt="Restaurant results page" />
+
+### Mobile Device Responsiveness
+<img src="./assets/images/MobileDeviceView.jpg" alt="Search Results on Mobile Device" />
 
 ### Examples of Input and Error Checking
 <img src="./assets/images/DistanceError.jpg" alt="User did not enter a distance" />
